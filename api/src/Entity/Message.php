@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
 use App\Controller\CreateMessageController;
 use App\Repository\MessageRepository;
@@ -13,6 +14,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Entity(repositoryClass: MessageRepository::class)]
 #[ApiResource(mercure:true, operations: [
     new Get(),
+    new GetCollection(),
     new Post(
         controller: CreateMessageController::class
     )
