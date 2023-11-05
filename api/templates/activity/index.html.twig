@@ -28,7 +28,7 @@
 						<h4 class="card-title">{{ activity.name }} / {{ activity.date ? activity.date|date('Y-m-d') : '' }}</h4>
 						<!--Text-->
 						<p class="card-text">
-							⏰{{ activity.startingTime ? activity.startingTime|date('H:i:s') : '' }}<br>
+							⏰{{ activity.startingTime ? activity.startingTime|date('H:i') : '' }}<br>
 							{{ activity.description }}<br>
 							Organized by: {{ activity.owner.getUsername }}<br>
 							with {{ activity.numberOfParticipants }} participants<br>
