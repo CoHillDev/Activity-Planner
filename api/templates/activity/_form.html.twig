@@ -1,185 +1,6 @@
-{# {{ form_start(form) }}
-
-{% if current_step == 1 %}
-    <div class="form-group">
-        {{ form_row(form.name, {
-            'attr': {'class': 'form-control', 'placeholder': 'name'}
-        }) }}
-    </div>
-    <div class="form-group">
-        {{ form_row(form.description, {
-            'attr': {'class': 'form-control', 'placeholder': 'description'}
-        }) }}
-    </div>
-{% elseif current_step == 2 %}
-    <div class="form-group">
-        {{ form_row(form.date, {
-            'attr': {'class': 'form-control', 'placeholder': 'date'}
-        }) }}
-    </div>
-{% elseif current_step == 3 %}
-    <div class="form-group">
-        {{ form_row(form.duration, {
-            'attr': {'class': 'form-control', 'placeholder': 'duration'}
-        }) }}
-    </div>
-    <div class="form-group">
-        {{ form_row(form.location, {
-            'attr': {'class': 'form-control', 'placeholder': 'location'}
-        }) }}
-    </div>
-{% elseif current_step == 4 %}
-    <div class="form-group">    
-		{{ form_row(form.starting_time, {
-            'attr': {'class': 'form-control', 'placeholder': 'date'}
-        }) }}
-	</div> 
-    <div class="form-group">
-		{{ form_row(form.numberOfParticipants, {
-            'attr': {'class': 'form-control', 'placeholder': 'how many friends'}
-        }) }}
-	</div> 
-{% elseif current_step == 5 %}
-    <div class="form-group">
-		{{ form_row(form.activityQuestions, {
-            'attr': {'class': 'form-control', 'placeholder': 'questions'}
-        })}}
-				</div> 
-{% endif %}
-
-<button class="btn custom-button">{{ button_label|default('Save') }}</button>
-
-{{ form_end(form) }} #}
-
-
-
+{# Formulaire activitées avec stepper mdBoostrap : #}
 
 {# {{ form_start(form) }}
-
-<div id="step1" {% if current_step != 1 %}style="display: none;"{% endif %}>
-    <div class="form-group">
-        {{ form_row(form.name, {
-            'attr': {'class': 'form-control', 'placeholder': 'name'},
-            'label': 'Name'
-        }) }}
-    </div>
-    <div class="form-group">
-        {{ form_row(form.description, {
-            'attr': {'class': 'form-control', 'placeholder': 'description'},
-            'label': 'Description'
-        }) }}
-    </div>
-</div>
-
-<div id="step2" {% if current_step != 2 %}style="display: none;"{% endif %}>
-    <div class="form-group">
-        {{ form_row(form.date, {
-            'attr': {'class': 'form-control', 'placeholder': 'date'},
-            'label': 'Date'
-        }) }}
-
-
-
-        {% if form.date.vars.errors|length > 0 %}
-            {% for error in form.date.vars.errors %}
-                <div class="alert alert-danger">{{ error.message }}</div>
-            {% endfor %}
-        {% endif %}
-    </div>
-</div>
-
-<div id="step3" {% if current_step != 3 %}style="display: none;"{% endif %}>
-    <div class="form-group">
-        {{ form_row(form.duration, {
-            'attr': {'class': 'form-control', 'placeholder': 'duration'},
-            'label': 'Duration'
-        }) }}
-    </div>
-    <div class="form-group">
-        {{ form_row(form.location, {
-            'attr': {'class': 'form-control', 'placeholder': 'location'},
-            'label': 'Location'
-        }) }}
-    </div>
-        <div class="form-group">    
-        {{ form_row(form.starting_time, {
-            'attr': {'class': 'form-control', 'placeholder': 'date'},
-            'label': 'Starting Time'
-        }) }}
-    </div> 
-    {{ form_row(form.outdoor) }}
-</div>
-
-<div id="step4" {% if current_step != 4 %}style="display: none;"{% endif %}>
-    <div class="form-group">
-        {{ form_row(form.numberOfParticipants, {
-            'attr': {'class': 'form-control', 'placeholder': 'how many friends'},
-            'label': 'Number of Participants'
-        }) }}
-    </div> 
-    {{ form_row(form.open) }}
-</div>
-
-<div id="step5" {% if current_step != 5 %}style="display: none;"{% endif %}>
-    <div class="form-group">
-        {{ form_row(form.activityQuestions, {
-            'attr': {'class': 'form-control', 'placeholder': 'questions'},
-            'label': 'Activity Questions'
-        })}}
-    </div> 
-</div>
-
-<button class="btn custom-button" id="next-button" {% if current_step == 5 %}style="display: none;"{% endif %}>Next</button>
-<button class="btn custom-button" id="save-button" {% if current_step != 5 %}style="display: none;"{% endif %}>Save</button>
-
-{{ form_end(form) }}
-
-<script>
-    var currentStep = {{ current_step }};
-
-    // Afficher l'étape actuelle
-    function showCurrentStep() {
-        for (var i = 1; i <= 5; i++) {
-            var step = document.getElementById('step' + i);
-            var nextButton = document.getElementById('next-button');
-            var saveButton = document.getElementById('save-button');
-
-            if (i === currentStep) {
-                step.style.display = 'block';
-
-                if (i === 5) {
-                    nextButton.style.display = 'none';
-                    saveButton.style.display = 'block';
-                } else {
-                    nextButton.style.display = 'block';
-                    saveButton.style.display = 'none';
-                }
-            } else {
-                step.style.display = 'none';
-            }
-        }
-    }
-
-    // Appeler showCurrentStep() au chargement de la page
-    showCurrentStep();
-
-    // Passer à l'étape suivante
-    function nextStep() {
-        currentStep++;
-        showCurrentStep();
-    }
-
-    // Écouter le clic sur le bouton "Next"
-    document.getElementById('next-button').addEventListener('click', nextStep);
-
-    // Afficher l'étape actuelle lors du chargement de la page
-    showCurrentStep();
-
-
-
-</script> #}
-
-{{ form_start(form) }}
 
 <ul class="stepper" data-mdb-stepper="stepper">
   <li class="stepper-step stepper-active">
@@ -269,5 +90,298 @@
   </li>
 
 </ul>
+
+{{ form_end(form) }} #}
+
+{# Formulaire activitées avec boutons Next & Back : #}
+
+{{ form_start(form) }}
+
+<ul id="formStep" class="stepper" style="height:500px">
+  <li class="stepper-step stepper-active" id="step1">
+    <div class="stepper-head">
+      <span class="stepper-head-icon">1</span>
+    </div>
+    <div class="stepper-content py-3">
+            {{ form_row(form.name, {
+                'attr': {'class': 'form-control', 'placeholder': 'name'},
+                'label': 'Name'
+            }) }}
+    
+            {{ form_row(form.description, {
+                'attr': {'class': 'form-control', 'placeholder': 'description'},
+                'label': 'Description'
+            }) }}
+
+            <a class="btn custom-button-activity btn-sm" id="next-2">Next</a>
+  </li>
+  <li class="stepper-step" id="step2">
+    <div class="stepper-head">
+      <span class="stepper-head-icon">2</span>
+    </div>
+    <div class="stepper-content py-3">
+        {{ form_row(form.date, {
+            'attr': {'class': 'form-control', 'placeholder': 'date'},
+            'label': 'Date'
+        }) }}
+        {% if form.date.vars.errors|length > 0 %}
+            {% for error in form.date.vars.errors %}
+                <div class="alert alert-danger">{{ error.message }}</div>
+            {% endfor %}
+        {% endif %}
+        
+            <a class="btn custom-button-activity btn-sm" id="back-1">Back</a>
+            <a class="btn custom-button-activity btn-sm" id="next-3">Next</a>
+    </div>
+  </li>
+  <li class="stepper-step" id="step3">
+    <div class="stepper-head">
+      <span class="stepper-head-icon">3</span>
+    </div>
+    <div class="stepper-content py-3">
+        <div class="d-none">
+            {{ form_row(form.duration, {
+                'attr': {'class': 'form-control d-none', 'placeholder': 'duration'},
+                'label': 'Duration',
+                'value': '2'
+            }) }} 
+        </div>
+        {{ form_row(form.location, {
+            'attr': {'class': 'form-control', 'placeholder': 'location'},
+            'label': 'Location'
+        }) }}  
+        {{ form_row(form.starting_time, {
+            'attr': {'class': 'form-control', 'placeholder': 'date'},
+            'label': 'Starting Time'
+        }) }}
+        
+        {{ form_row(form.outdoor) }}
+        
+            <a class="btn custom-button-activity btn-sm" id="back-2">Back</a>
+            <a class="btn custom-button-activity btn-sm" id="next-4">Next</a>
+    </div>
+  </li>
+
+  <li class="stepper-step" id="step4">
+    <div class="stepper-head">
+      <span class="stepper-head-icon">4</span>
+    </div>
+    <div class="stepper-content py-3">
+        {{ form_row(form.numberOfParticipants, {
+            'attr': {'class': 'form-control', 'placeholder': 'how many friends'},
+            'label': 'Number of Participants'
+        }) }}
+        {{ form_row(form.open) }}
+        
+            <a class="btn custom-button-activity btn-sm" id="back-3">Back</a>
+            <a class="btn custom-button-activity btn-sm" id="next-5">Next</a>
+    </div>
+  </li>
+
+  <li class="stepper-step" id="step5">
+    <div class="stepper-head">
+      <span class="stepper-head-icon">5</span>
+    </div>
+    <div class="stepper-content py-3">
+        {{ form_row(form.activityQuestions, {
+            'attr': {'class': 'form-control', 'placeholder': 'questions'},
+            'label': 'Activity Questions'
+        })}}
+            <a class="btn custom-button-activity btn-sm" id="back-4">Back</a>
+        <div class="button">  
+            <button class="btn custom-button-activity" id="save-button">Save</button>
+        </div>
+    </div>
+  </li>
+
+</ul>
+<script type="text/javascript">
+let clickableElements = document.querySelectorAll('.stepper-head');
+let step1content = document.querySelector("#step1 .stepper-content");
+let step2content = document.querySelector("#step2 .stepper-content");
+let step3content = document.querySelector("#step3 .stepper-content");
+let step4content = document.querySelector("#step4 .stepper-content");
+let step5content = document.querySelector("#step5 .stepper-content");
+step2content.classList.add("d-none");
+step3content.classList.add("d-none");
+step4content.classList.add("d-none");
+step5content.classList.add("d-none");
+clickableElements.forEach(function(element) {
+  element.addEventListener('click', function(event) {
+    event.preventDefault();
+    console.log('Custom click behavior for ' + element.textContent);
+    
+    
+  });
+});
+let form = document.getElementById("formStep");
+let buttonB1 = document.getElementById("back-1");
+let buttonB2 = document.getElementById("back-2");
+let buttonB3 = document.getElementById("back-3");
+let buttonB4 = document.getElementById("back-4");
+
+let buttonN2 = document.getElementById("next-2");
+let buttonN3 = document.getElementById("next-3");
+let buttonN4 = document.getElementById("next-4");
+let buttonN5 = document.getElementById("next-5");
+buttonB4.addEventListener("click", function(e){
+    e.preventDefault();
+    let step4 = document.querySelector("#step4");
+    let step5 = document.querySelector("#step5");
+    let step4content = document.querySelector("#step4 .stepper-content");
+    let step5content = document.querySelector("#step5 .stepper-content");
+    step5.classList.remove("stepper-active");
+    step4.classList.add("stepper-active");
+    step4content.style.display = "block"; 
+    step5content.style.display = "none";
+    step5content.classList.remove("fast");
+    step4content.classList.add("fast");
+    step5content.classList.remove("slide-in-right");
+    step4content.classList.add("slide-in-right");
+    step5content.classList.remove("animation");
+    step4content.classList.add("animation");
+});
+buttonB3.addEventListener("click", function(e){
+    e.preventDefault();
+    let step3 = document.querySelector("#step3");
+    let step4 = document.querySelector("#step4");
+    let step3content = document.querySelector("#step3 .stepper-content");
+    let step4content = document.querySelector("#step4 .stepper-content");
+    formStep.style.height = 4 * step3.clientHeight + "px";
+    step3.classList.add("stepper-active");
+    step4.classList.remove("stepper-active");
+    step4content.style.display = "none";
+    step4content.classList.remove("fast");
+    step4content.classList.remove("slide-in-right");
+    step4content.classList.remove("animation");
+    step3content.style.display = "block"; 
+    step3content.classList.add("fast");
+    step3content.classList.add("slide-in-right");
+    step3content.classList.add("animation");
+});
+buttonB2.addEventListener("click", function(e){
+    e.preventDefault();
+    let step2 = document.querySelector("#step2");
+    let step3 = document.querySelector("#step3");
+    let step2content = document.querySelector("#step2 .stepper-content");
+    let step3content = document.querySelector("#step3 .stepper-content");
+    step2.classList.add("stepper-active");
+    step3.classList.remove("stepper-active");
+    step3content.style.display = "none";
+    step3content.classList.remove("fast");
+    step3content.classList.remove("slide-in-right");
+    step3content.classList.remove("animation");
+    step2content.style.display = "block"; 
+    step2content.classList.add("fast");
+    step2content.classList.add("slide-in-right");
+    step2content.classList.add("animation");
+});
+buttonB1.addEventListener("click", function(e){
+    e.preventDefault();
+    let step1 = document.querySelector("#step1");
+    let step2 = document.querySelector("#step2");
+    let step1content = document.querySelector("#step1 .stepper-content");
+    let step2content = document.querySelector("#step2 .stepper-content");
+    step1.classList.add("stepper-active");
+    step2.classList.remove("stepper-active");
+    step2content.style.display = "none";
+    step2content.classList.remove("fast");
+    step2content.classList.remove("slide-in-right");
+    step2content.classList.remove("animation");
+    step1content.style.display = "block"; 
+    step1content.classList.add("fast");
+    step1content.classList.add("slide-in-right");
+    step1content.classList.add("animation");
+});
+
+buttonN5.addEventListener("click", function(e){
+    e.preventDefault();
+    let step4 = document.querySelector("#step4");
+    let step5 = document.querySelector("#step5");
+    let step4content = document.querySelector("#step4 .stepper-content");
+    let step5content = document.querySelector("#step5 .stepper-content");
+    step5.classList.add("stepper-active");
+    step4.classList.remove("stepper-active");
+    step4content.style.display = "none";
+    step5content.classList.remove("d-none");
+    step4content.classList.remove("fast");
+    step4content.classList.remove("slide-in-right");
+    step4content.classList.remove("animation");
+    step5content.style.display = "block"; 
+    step5content.classList.add("fast");
+    step5content.classList.add("slide-in-right");
+    step5content.classList.add("animation");
+});
+buttonN4.addEventListener("click", function(e){
+    e.preventDefault();
+    let step3 = document.querySelector("#step3");
+    let step4 = document.querySelector("#step4");
+    let step3content = document.querySelector("#step3 .stepper-content");
+    let step4content = document.querySelector("#step4 .stepper-content");
+    step3.classList.remove("stepper-active");
+    step4.classList.add("stepper-active");
+    step4content.style.display = "block"; 
+    step3content.style.display = "none";
+    step4content.classList.remove("d-none");
+    step3content.classList.remove("fast");
+    step4content.classList.add("fast");
+    step3content.classList.remove("slide-in-right");
+    step4content.classList.add("slide-in-right");
+    step3content.classList.remove("animation");
+    step4content.classList.add("animation");
+});
+buttonN3.addEventListener("click", function(e){
+    e.preventDefault();
+    let step2 = document.querySelector("#step2");
+    let step3 = document.querySelector("#step3");
+    let step2content = document.querySelector("#step2 .stepper-content");
+    let step3content = document.querySelector("#step3 .stepper-content");
+    formStep.style.height = 4 * step3.clientHeight + "px";
+    step3.classList.add("stepper-active");
+    step2.classList.remove("stepper-active");
+    step2content.style.display = "none";
+    step2content.classList.remove("fast");
+    step2content.classList.remove("slide-in-right");
+    step2content.classList.remove("animation");
+    step3content.style.display = "block"; 
+    step3content.classList.remove("d-none");
+    step3content.classList.add("fast");
+    step3content.classList.add("slide-in-right");
+    step3content.classList.add("animation");
+});
+buttonN2.addEventListener("click", function(e){
+    e.preventDefault();
+    let step1 = document.querySelector("#step1");
+    let step2 = document.querySelector("#step2");
+    let step1content = document.querySelector("#step1 .stepper-content");
+    let step2content = document.querySelector("#step2 .stepper-content");
+    step2.classList.add("stepper-active");
+    step1.classList.remove("stepper-active");
+    step1content.style.display = "none";
+    step1content.classList.remove("fast");
+    step1content.classList.remove("slide-in-right");
+    step1content.classList.remove("animation");
+    step2content.classList.remove("d-none");
+    step2content.style.display = "block"; 
+    step2content.classList.add("fast");
+    step2content.classList.add("slide-in-right");
+    step2content.classList.add("animation");
+});
+
+</script>
+
+<style>
+.stepper-head,
+.stepper-head-icon {
+    cursor: initial !important;
+}
+.stepper-head:hover, .steps-head-hover {
+    background-color: transparent !important;
+}
+.stepper-active .stepper-head-icon {
+    background-color:#6C6AFF !important;
+    color: white !important;
+}
+</style>
 
 {{ form_end(form) }}

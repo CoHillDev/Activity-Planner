@@ -94,3 +94,21 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
+.btn:hover {
+  background-color: white;
+}
+
+/* stepper */
+
+/* .stepper-head,
+.stepper-head-icon {
+    cursor: initial !important;
+}
+.stepper-head:hover, .steps-head-hover {
+    background-color: transparent !important;
+}
+.stepper-active .stepper-head-icon {
+    background-color:#6C6AFF !important;
+    color: white !important;
+} */
