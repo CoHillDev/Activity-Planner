@@ -21,7 +21,7 @@
 					{% if app.user %}
 						<div class="mb-3">
 							You are logged in as
-							{{ app.user.userIdentifier }},
+							{{ app.user.userIdentifier|e }},
 							<a href="{{ path('app_logout') }}">Logout</a>
 						</div>
 					{% endif %}
@@ -32,8 +32,7 @@
 					<label for="inputPassword">Password</label>
 					<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 
-					<input
-					type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 					<!-- 2 column grid layout -->
 					<div class="row mb-4">
