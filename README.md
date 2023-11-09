@@ -17,19 +17,22 @@ Avant d'installer et de configurer Activity Planner, assurez-vous d'avoir les pr
 Suivez ces étapes pour installer Activity Planner sur votre système :
 
 1. Clonez ce référentiel GitHub sur votre machine locale en utilisant la commande suivante :
-
+  ```
   bash
   git clone https://github.com/CoHillDev/activity-planner.git
+  ```
 
 2. Accédez au répertoire du projet :
-
+  ```
   bash
   cd activity-planner
+  ```
 
 3. Utilisez Docker Compose pour construire et lancer les conteneurs Docker de l'application :
-
+  ```
   bash
   docker-compose up -d
+  ```
 
 4. Une fois les conteneurs démarrés, vous pouvez accéder à l'application en ouvrant votre navigateur web et en visitant l'URL suivante : http://localhost
 -> Pour accéder l'interface utilisateur: http://localhost/app
@@ -41,27 +44,31 @@ Si vous préférez exécuter l'application Activity Planner directement sur Ubun
 1. Ouvrez un terminal sur votre système Ubuntu.
 
 2. Clonez ce référentiel GitHub en utilisant la commande suivante. Assurez-vous d'être dans le répertoire où vous souhaitez installer l'application :
-
+  ```
   bash
   git clone https://github.com/CoHillDev/activity-planner.git
+  ```
 
 3. Accédez au répertoire du projet que vous venez de cloner :
-
+  ```
   bash
   cd activity-planner
+  ```
 
 4. Pour garantir l'accès des conteneurs Docker aux fichiers dans le répertoire racine de l'application, vous devrez modifier les autorisations d'accès. Utilisez la commande chmod avec l'option -R pour accorder des permissions d'écriture, de lecture et d'exécution à tous les fichiers et répertoires :
-
+  ```
   bash
   chmod -R 777 .
+  ```
 
 -> Assurez-vous d'être dans le répertoire racine du projet lorsque vous exécutez cette commande.
 -> N'oubliez pas que modifier les autorisations avec chmod 777 est une solution temporaire pour faciliter l'accès des conteneurs aux fichiers. Il peut être nécessaire d'ajuster ces autorisations en fonction des besoins de sécurité de votre système.
 
 5. Une fois les autorisations modifiées, vous pouvez utiliser Docker Compose pour construire et lancer les conteneurs Docker de l'application :
-
+  ```
   bash
   docker-compose up -d
+  ```
 
 6. Une fois les conteneurs démarrés, vous pouvez accéder à l'application en ouvrant votre navigateur web et en visitant l'URL suivante : http://localhost
 -> Pour accéder l'interface utilisateur: http://localhost/app
