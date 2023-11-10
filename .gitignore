@@ -3,3 +3,4 @@
 !/helm/api-platform/charts/.gitignore
 /vendor/
 *Zone.Identifier
+api/.phpunit.cache/test-results
